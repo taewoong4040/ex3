@@ -22,14 +22,14 @@ public class HelloControllerTest {
         int amount = 1000;
 
         mvc.perform(
-                get("/hello/dto") //get 방식의 요청
-                        .param("name", name) //파라미터 String만 허용
-                        //.param("amount", "3000"))
-                .param("amount", String.valueOf(amount)))
+                        get("/hello/dto") //get 방식의 요청
+                                .param("name", name) //파라미터 String만 허용
+                                //.param("amount", "3000"))
+                                .param("amount", String.valueOf(amount)))
                 .andExpect(status().isOk()) //Http header의 status 200 OK
                 .andExpect(jsonPath("$.name", is(name))) //$. 다음에 필드명
                 .andExpect(jsonPath("$.amount", is(amount)));
-                //jsonPath: JSON 응답값을 필드별로 검증
+        //jsonPath: JSON 응답값을 필드별로 검증
     }
 }
 
